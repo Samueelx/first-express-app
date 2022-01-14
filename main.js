@@ -3,13 +3,19 @@ const app = express();
 
 app.use(express.urlencoded({extended: false}));
 
-app.get('/', (req, res) => {
+function getWeather(req, res, next){
+    req.visitorWeather = false;
+    next();
+}
+
+app.get('/', getWeather, (req, res) => {
     res.send(`
     <h1>What is the color of the sky on a clear day?</h1>
     <form action = "/result" method = "POST">
         <input type = "text" name = "color">
         <button>Submit answer</button>
     </form>
+    <p>${req.visitorWeather ? "It is raining." : "It is not raining."}</p>
     `);
 });
 
@@ -18,7 +24,7 @@ app.get('/about', (req, res) => {
 });
 
 app.post("/result", (req, res) => {
-    if (req.body.color === "blue"){
+    if (req.body.color.trim().toUpperCase() === "BLUE"){
         res.send("Congrats, that is correct.");
     }
     else {
