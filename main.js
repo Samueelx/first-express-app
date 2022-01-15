@@ -4,8 +4,12 @@ const app = express();
 app.use(express.urlencoded({extended: false}));
 
 function getWeather(req, res, next){
-    req.visitorWeather = false;
-    next();
+    req.visitorWeather = true;
+    if (req.visitorWeather){
+        res.send("Please come back to our app when it's not raining!")
+    } else {
+        next();
+    }
 }
 
 app.get('/', getWeather, (req, res) => {
