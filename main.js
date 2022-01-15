@@ -40,4 +40,13 @@ app.post("/result", (req, res) => {
     }
 });
 
+app.get('/api/pets', (req, res) => {
+    res.json(
+        [
+            {name: "Meowsalot", species: "cat"}, 
+            {name: "Barksalot", species: "dog"}
+        ]
+    );
+})
+
 app.listen(3000);
