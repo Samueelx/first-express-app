@@ -8,7 +8,7 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
 function getWeather(req, res, next){
-    req.visitorWeather = true;
+    req.visitorWeather = false;
     if (req.visitorWeather){
         res.send("Please come back to our app when it's not raining!");
     } else {
@@ -17,14 +17,13 @@ function getWeather(req, res, next){
 }
 
 app.get('/', getWeather, (req, res) => {
-    res.send(`
-    <h1>What is the color of the sky on a clear day?</h1>
-    <form action = "/result" method = "POST">
-        <input type = "text" name = "color">
-        <button>Submit answer</button>
-    </form>
-    <p>${req.visitorWeather ? "It is raining." : "It is not raining."}</p>
-    `);
+    res.render("index", {
+        isRaining: req.visitorWeather, 
+        pets: [
+            {name: "Meowsalot", species: "cat"}, 
+            {name: "Barksalot", species: "dog"}
+        ]
+    });
 });
 
 app.get('/about', (req, res) => {
