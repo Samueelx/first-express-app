@@ -1,12 +1,16 @@
 const express = require('express');
 const app = express();
+const path = require('path');
 
 app.use(express.urlencoded({extended: false}));
+
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
 
 function getWeather(req, res, next){
     req.visitorWeather = true;
     if (req.visitorWeather){
-        res.send("Please come back to our app when it's not raining!")
+        res.send("Please come back to our app when it's not raining!");
     } else {
         next();
     }
