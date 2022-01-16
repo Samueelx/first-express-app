@@ -1,0 +1,63 @@
+html {
+    scroll-behavior: smooth;
+}
+body {
+    font-family: monospace;
+}
+
+li {
+    display: inline;
+}
+
+nav {
+    padding: 20px;
+    font-size: 15px;
+    background-color: lightgray;
+    border-radius: 9px;
+    border: 1px none lightgray;
+}
+nav a {
+    background-color: lightcyan;
+    color: rgb(37, 32, 32);
+}
+nav a:hover{
+    color: green;
+    text-shadow: 2px 2px 7px black;
+}
+
+div {
+    border: 0.5px none skyblue;
+    border-radius: 9px;
+}
+
+.intro {
+    font-size: 10px;
+    padding: 50px;
+    height: 70vh;
+    background-color: #d7e4e7;
+    font-family: monospace;
+    text-align: center;
+    text-shadow: 2px 2px 10px green;
+}
+.intro p {
+    font-size: 15px;
+}
+#link {
+    position: sticky;
+    top: 10;
+}
+
+#mando {
+    border-radius: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0.7;
+}
+
+.first {
+    margin: 15px;
+}
+footer {
+    text-align: center;
+}
