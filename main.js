@@ -18,13 +18,7 @@ function getWeather(req, res, next){
 }
 
 app.get('/', getWeather, (req, res) => {
-    res.render("index", {
-        isRaining: req.visitorWeather, 
-        pets: [
-            {name: "Meowsalot", species: "cat"}, 
-            {name: "Barksalot", species: "dog"}
-        ]
-    });
+    res.render("index");
 });
 
 app.get('/about', (req, res) => {
