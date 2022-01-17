@@ -20,6 +20,15 @@ function getWeather(req, res, next){
 app.get('/', getWeather, (req, res) => {
     res.render("index");
 });
+app.get('/home', getWeather, (req, res) => {
+    res.render("home.ejs", {
+        isRaining: req.visitorWeather,
+        pets: [
+            {name: "Meowsalot", species: "cat"}, 
+            {name: "Barksalot", species: "dog"}
+        ]
+    });
+});
 
 app.get('/about', (req, res) => {
     res.send("Thanks for learning more about us!");
